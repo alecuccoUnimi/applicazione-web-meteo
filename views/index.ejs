@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Cucco Alessandro">
+  <meta name="description" content="Previsioni Meteo">
+  <meta name="keywords" content="previsioni, meteo, tempo, temperatura, umidità, vento, condizioni, metereologiche">
+  <meta name="robots" content="index,follow" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "image": "",
+      "url": "",
+      "name": "Meteo",
+      "description": "Previsioni Meteo",
+      "keywords": "previsioni, meteo, tempo, temperatura, umidita', vento, condizioni, metereologiche",
+      "inLanguage": "it",
+      "author": {
+          "@type": "Person",
+          "name": "Cucco Alessandro",
+          "description": "Previsioni Meteo",
+          "email": "alessandro.cucco1@studenti.unimi.it",
+      }
+    }
+  </script>
+  <title>Meteo</title>
+  
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <%-include("partials/header.ejs")%>
+
+    <main>
+    
+    
+      <!--CAROUSEL-->
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img data-src="/img/carousel_milano.webp" alt="Milano">
+    
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <img id="img_1" src="" alt="Immagine meteo">
+                <h1>Milano</h1>
+                <h5 id="meteo_1">meteo</h5>
+                <p><a class="btn btn-lg btn-primary" href="/ricerca?citta=Milano">Meteo</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img data-src="/img/carousel_roma.webp" alt="NewYork">
+    
+            <div class="container">
+              <div class="carousel-caption">
+                <img id="img_2" src="" alt="Immagine meteo">
+                <h1>Roma</h1>
+                <h5 id="meteo_2">meteo</h5>
+                <p><a class="btn btn-lg btn-primary" href="/ricerca?citta=Roma">Meteo</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img data-src="/img/carousel_napoli.webp" alt="Tokyo">
+    
+    
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <img id="img_3" src="" alt="immagine meteo">
+                <h1>Napoli</h1>
+                <h5 id="meteo_3">meteo</h5>
+                <p><a class="btn btn-lg btn-primary" href="/ricerca=?citta=Napoli">Meteo</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!--END CAROUSEL-->
+    
+    
+      
+      <div class="container">
+
+        <!--GEOLOCATION-->
+        <div class="card rounded">
+          <div class="card-header primary-color">
+            <div class="row g-0">
+              <div class="col-md-10">
+                <h4 id="geolocation">Posizione</h4>
+              </div>
+              <div class="col-md-2 ">
+                <a id="link_posizione" class="text-white" href="">Meteo</a>
+              </div>
+            </div>
+    
+          </div>
+          <div id="div_posizione" class="card-body secondary-color ">
+            <div class="row g-0">
+              <div class="col-md-2">
+                <img id="immagine_posizione" src="" class="img-fluid rounded-start" alt="meteo corrente">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 id="giorno_corrente" class="card-title">Giorno Corrente</h5>
+                  <p id="tempo_corrente" class="card-text">Tempo corrente</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="card-body">
+                  <h5 id="temperatura_corrente" class="card-title">Temperatura</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--END GEOLOCATIOn-->
+    
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+          <div class="col">
+            <a class="list-group-item-action" href="/ricerca?citta=New+York">
+              <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg text-white">
+                <img data-src="/img/card_newyork.webp" alt="immagine New York">
+                <div class="card-img-overlay ">
+                  <img id="img_4" src="" alt="meteo New York">
+                  <h3 class="card-title">New York</h3>
+                  <h5 id="meteo_4">meteo</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="list-group-item-action" href="/ricerca?citta=Dubai">
+              <div class="card card card-cover h-100 overflow-hidden rounded-4 shadow-lg text-white">
+                <img data-src="/img/card_dubai.webp" class="card-img" alt="immagine Dubai">
+                <div class="card-img-overlay">
+                  <img id="img_5" src="" alt="meteo Dubai">
+                  <h3 class="card-title">Dubai</h3>
+                  <h5 id="meteo_5">meteo</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="list-group-item-action" href="/ricerca?citta=Londra">
+              <div class="card card card-cover h-100 overflow-hidden rounded-4 shadow-lg text-white">
+                <img data-src="/img/card_londra.webp" class="card-img" alt="immagine Londra">
+                <div class="card-img-overlay">
+                  <img id="img_6" src="" alt="meteo Londra">
+                  <h3 class="card-title">Londra</h3>
+                  <h5 id="meteo_6">meteo</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="list-group-item-action" href="/ricerca?citta=Tokyo">
+              <div class="card card card-cover h-100 overflow-hidden rounded-4 shadow-lg text-white ">
+                <img data-src="/img/card_tokyo.webp" class="card-img" alt="immagine Los Angeles">
+                <div class="card-img-overlay">
+                  <img id="img_7" src="" alt="meteo Tokyo">
+                  <h3 class="card-title">Tokyo</h3>
+                  <h5 id="meteo_7">meteo</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="list-group-item-action" href="/ricerca?citta=Los+Angeles">
+              <div class="card card card-cover h-100 overflow-hidden rounded-4 shadow-lg  text-white">
+                <img data-src="/img/card_losangeles.webp" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <img id="img_8" src="" alt="meteo Los Angeles">
+                  <h3 class="card-title">Los Angeles</h3>
+                  <h5 id="meteo_8">meteo</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="list-group-item-action" href="/ricerca?citta=Sidney">
+              <div class="card card card-cover h-100 overflow-hidden rounded-4 shadow-lg text-white text-white">
+                <img data-src="/img/card_sidney.webp" class="card-img" alt="immagine Sidney">
+                <div class="card-img-overlay">
+                  <img id="img_9" src="" alt="meteo Sidney">
+                  <h3 class="card-title">Sidney</h3>
+                  <h5 id="meteo_9">meteo</h5>
+                </div>
+              </div>
+          </a>
+        </div>
+        </div>
+      </div>
+    
+    </main>
+
+    <!-- FOOTER -->
+    <%-include("partials/footer.ejs")%>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+      <script  src="script/darkMode.js"></script>
+      <script  src="/script/index.js"></script>
+      <script  src="/script/geolocation.js"></script>
+      <script  src="/script/imageLoader.js"></script> 
+</body>
+
+</html>

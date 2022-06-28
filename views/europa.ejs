@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Cucco Alessandro">
+  <meta name="description" content="Previsioni Meteo">
+  <meta name="keywords" content="previsioni, meteo, tempo, temperatura, umidità, vento, condizioni, metereologiche">
+  <meta name="robots" content="index,follow"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "image": "",
+      "url": "",
+      "name": "Meteo",
+      "description": "Previsioni Meteo",
+      "keywords": "previsioni, meteo, tempo, temperatura, umidita', vento, condizioni, metereologiche",
+      "inLanguage": "it",
+      "author": {
+          "@type": "Person",
+          "name": "Cucco Alessandro",
+          "description": "Previsioni Meteo",
+          "email": "alessandro.cucco1@studenti.unimi.it",
+      }
+    }
+  </script>
+
+  <title>Europa</title>
+
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <%-include("partials/header.ejs")%>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="row g-0">
+              <div class="col-md-10">
+                <h4>Meteo Europa</h4>
+              </div>
+            </div>
+          </div>
+          <img id="main-image" data-src="/img/europa.webp" class="card-img-top" alt="Immagine Europa">
+        </div>
+
+        <!--REGNO UNITO-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Regno Unito</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Londra">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_1" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_1" class="card-title">Londra</h5>
+                    <p id="meteo_1" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_1" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Liverpool">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_2" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_2" class="card-title">Liverpool</h5>
+                    <p id="meteo_2" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_2" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Manchester">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_3" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_3" class="card-title">Manchester</h5>
+                    <p id="meteo_3" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_3" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!--FRANCIA-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Francia</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Parigi">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_4" src="" class="img-fluid rounded-start" alt="meteo Parigi">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_4" class="card-title">Parigi</h5>
+                    <p id="meteo_4" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_4" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Marsiglia">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_5" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_5" class="card-title">Marsiglia</h5>
+                    <p id="meteo_5" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_5" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Nizza">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_6" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_6" class="card-title">Nizza</h5>
+                    <p id="meteo_6" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_6" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!--SPAGNA-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Spagna</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Madrid">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_7" src="" class="img-fluid rounded-start" alt="meteo Madrid">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_7" class="card-title">Madrid</h5>
+                    <p id="meteo_7" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_7" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Siviglia">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_8" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_8" class="card-title">Siviglia</h5>
+                    <p id="meteo_8" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_8" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Barcellona">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_9" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_9" class="card-title">Barcellona</h5>
+                    <p id="meteo_9" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_9" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!--GERMANIA-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Germania</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Berlino">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_10" src="" class="img-fluid rounded-start" alt="meteo Berlino">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_10" class="card-title">Berlino</h5>
+                    <p id="meteo_10" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_10" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Francoforte">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_11" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_11" class="card-title">Francoforte</h5>
+                    <p id="meteo_11" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_11" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Monaco">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_12" src="" class="img-fluid rounded-start" alt="meteo Londra">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_12" class="card-title">Monaco</h5>
+                    <p id="meteo_12" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_12" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!--PAESI BASSI-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Paesi Bassi</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Amsterdam">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_13" src="" class="img-fluid rounded-start" alt="meteo Amsterdam">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_13" class="card-title">Amsterdam</h5>
+                    <p id="meteo_13" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_13" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!--PORTOGALLO-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Portogallo</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Lisbona">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_14" src="" class="img-fluid rounded-start" alt="meteo Amsterdam">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_14" class="card-title">Lisbona</h5>
+                    <p id="meteo_14" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_14" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Porto">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_15" src="" class="img-fluid rounded-start" alt="meteo Amsterdam">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_15" class="card-title">Porto</h5>
+                    <p id="meteo_15" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_15" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!--IRLANDA-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            <div class="col-md-10">
+              <h4>Irlanda</h4>
+            </div>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Dublino">
+              <div class="row g-0">
+                <div class="col-md-2">
+                  <img id="img_16" src="" class="img-fluid rounded-start" alt="meteo Dublino">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 id="citta_16" class="card-title">Dublino</h5>
+                    <p id="meteo_16" class="card-text">Meteo</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card-body">
+                    <h5 id="temp_16" class="card-title">Temperatura</h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+      
+        <!--Città italiane-->
+        <div class="card mt-5 shadow mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            Meteo Città Italiane
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Torino">Torino</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Genova">Genova</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Milano">Milano</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Bologna">Bologna</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Firenze">Firenze</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Roma">Roma</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Napoli">Napoli</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Palermo">Palermo</a>
+          </div>
+        </div>
+      
+        <!--Città Mondo-->
+        <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+          <div class="card-header primary-color text-white">
+            Meteo Città Mondo
+          </div>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=New+York">New York</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Dubai">Dubai</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Sydney">Sydney</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Pechino">Pechino</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Los+Angeles">Los Angeles</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=San+Paolo">San Paolo</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Tokyo">Tokyo</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Nuova+Delhi">Nuova Delhi</a>
+            <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Buonos+Aires">Buenos Aires</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+    <!-- FOOTER -->
+    <%-include("partials/footer.ejs")%>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+      <script  src="script/darkMode.js"></script>
+      <script  src="/script/europa.js"></script>
+      <script  src="/script/imageLoader.js"></script>
+</body>
+
+</html>

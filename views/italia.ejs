@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Cucco Alessandro">
+  <meta name="description" content="Previsioni Meteo">
+  <meta name="keywords" content="previsioni, meteo, tempo, temperatura, umidità, vento, condizioni, metereologiche">
+  <meta name="robots" content="index,follow" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "image": "",
+      "url": "",
+      "name": "Meteo",
+      "description": "Previsioni Meteo",
+      "keywords": "previsioni, meteo, tempo, temperatura, umidita', vento, condizioni, metereologiche",
+      "inLanguage": "it",
+      "author": {
+          "@type": "Person",
+          "name": "Cucco Alessandro",
+          "description": "Previsioni Meteo",
+          "email": "alessandro.cucco1@studenti.unimi.it",
+      }
+    }
+  </script>
+
+  <title>Italia</title>
+
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <%-include("partials/header.ejs")%>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div  class="col-md-9">
+            <div  class="card mt-5 shadow-lg mb-5 bg-body rounded ">
+              <div class="card-header text-white primary-color">
+                <div class="row g-0">
+                  <div class="col-md-10">
+                    <h4>Meteo Italia</h4>
+                  </div>
+                </div>
+                </div>
+                <img id="main-image" data-src="/img/italy.webp"  class="card-img-top" alt="immagine Italia">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Milano">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_1" data-src="http://openweathermap.org/img/wn/01d@2x.png"  src="" class="img-fluid rounded-start" alt="meteo Milano">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_1" class="card-title">Milano</h5>
+                          <p id="meteo_1" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_1" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Roma">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_2" data-src="" class="img-fluid rounded-start"   alt="meteo Roma">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_2" class="card-title">Roma</h5>
+                          <p id="meteo_2" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_2" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Napoli">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_3" data-src="" class="img-fluid rounded-start"   alt="meteo Napoli">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_3" class="card-title">Napoli</h5>
+                          <p id="meteo_3" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_3" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Bologna">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_4" data-src="" class="img-fluid rounded-start"  alt="meteo Bologna">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_4" class="card-title">Bologna</h5>
+                          <p id="meteo_4" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_4" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Firenze">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_5" data-src="" class="img-fluid rounded-start"  alt="meteo Firenze">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_5" class="card-title">Firenze</h5>
+                          <p id="meteo_5" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_5" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Torino">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_6" data-src="" class="img-fluid rounded-start"  alt="meteo Torino">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_6" class="card-title">Torino</h5>
+                          <p id="meteo_6" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_6" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Venezia">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_7" data-src="" class="img-fluid rounded-start"  alt="meteo Venezia">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_7" class="card-title">Venezia</h5>
+                          <p id="meteo_7" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_7" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Palermo">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_8" data-src="" class="img-fluid rounded-start"  alt="meteo Palermo">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_8" class="card-title">Palermo</h5>
+                          <p id="meteo_8" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_8" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Verona">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_9" data-src="" class="img-fluid rounded-start"  alt="meteo Verona">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_9" class="card-title">Verona</h5>
+                          <p id="meteo_9" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_9" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Bari">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_10" data-src="" class="img-fluid rounded-start" alt="meteo Bari">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="citta_10" class="card-title">Bari</h5>
+                          <p id="meteo_10" class="card-text">Meteo</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h5 id="temp_10" class="card-title">Temperatura</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+               </div> 
+            </div>
+          </div>
+
+          <div class="col-md-3">
+
+            <!--Città Europee-->
+            <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+              <div class="card-header primary-color text-white">
+                Meteo Città Europee
+              </div>
+              <div class="list-group">
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Londra">Londra</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Parigi">Parigi</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Madrid">Madrid</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Berlino">Berlino</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Atene">Atene</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Zurigo">Zurigo</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Amsterdam">Amsterdam</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Dublino">Dublino</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Krakovia">Krakovia</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Copenhagen">Copenhagen</a>
+              </div>
+            </div>
+
+            <!--Città Mondo-->
+            <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+              <div class="card-header primary-color text-white">
+                Meteo Città Mondo
+              </div>
+              <div class="list-group">
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=New+York">New York</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Dubai">Dubai</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Sydney">Sydney</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Pechino">Pechino</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Los+Angeles">Los Angeles</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=San+Paolo">San Paolo</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Tokyo">Tokyo</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Nuova+Delhi">Nuova Delhi</a>
+                <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Buonos+Aires">Buenos Aires</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <%-include("partials/footer.ejs")%>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+      <script  src="script/darkMode.js"></script>
+      <script  src="/script/italia.js"></script>
+      <script  src="/script/imageLoader.js"></script>
+</body>
+
+</html>

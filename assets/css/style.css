@@ -1,0 +1,86 @@
+/* COLORS 
+-----------------------------------------------------*/
+  
+  .primary-color{
+    background-color: #023E8A;
+    color:white;
+  }
+
+  .secondary-color{
+    background-color: #add8e6;
+  }
+
+
+  /*CAROUSEL
+-------------------------------------------------- */
+
+  .carousel {
+    margin-bottom: 4rem;
+  }
+
+  .carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+  }
+
+  .carousel-item {
+    height: 40rem;
+  }
+
+  .carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+    object-position: center;
+   
+  }
+
+  @media (min-width: 40em) {
+    .carousel-caption p {
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+  }
+
+
+/*GENERAL CSS
+--------------------------------------------*/
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+#main-image{
+  height: 300px;
+  object-fit: cover;
+}
+
+#weather-image{
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+}
+
+
+/* DARK MODE
+-------------------------------------------*/
+  .dark-mode-primary-color{
+    background-color: #00132d;
+    color:white;
+  }
+
+  .dark-mode-secondary-color{
+    background-color: #002657;
+    color:white;
+  }
+
+  .background-color{
+    background-color: #114477;
+    color:white;
+  }
+

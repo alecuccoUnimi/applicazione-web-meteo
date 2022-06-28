@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Cucco Alessandro">
+  <meta name="description" content="Previsioni Meteo">
+  <meta name="keywords" content="previsioni, meteo, tempo, temperatura, umidità, vento, condizioni, metereologiche">
+  <meta name="robots" content="index,follow" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "image": "",
+      "url": "",
+      "name": "Meteo",
+      "description": "Previsioni Meteo",
+      "keywords": "previsioni, meteo, tempo, temperatura, umidita', vento, condizioni, metereologiche",
+      "inLanguage": "it",
+      "author": {
+          "@type": "Person",
+          "name": "Cucco Alessandro",
+          "description": "Previsioni Meteo",
+          "email": "alessandro.cucco1@studenti.unimi.it",
+      }
+    }
+  </script>
+
+  <title><%= citta %></title>
+ 
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <%-include("partials/header.ejs")%>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="card mt-5 shadow mb-5 bg-body rounded">
+              <div class="card-header primary-color text-white">
+                <div class="row g-0">
+                  <div class="col-md-10">
+                    <h4>Meteo <%= citta %></h4>
+                  </div>
+                  <div class="col-md-2">
+                    <h5>Orario: <%= ora_corrente %></h5>
+                  </div>
+                </div>
+              </div>
+              <img id="weather-image" data-src="<%=immagine%>" class="card-img-top" alt="Immagine Ricerca">
+              <ul class="list-group list-group-flush ">
+
+                <!--METEO CORRENTE-->
+                <li class="list-group-item secondary-color">
+                  <div class="row g-0">
+                    <div class="col-md-2">
+                      <img id="img_corrente" data-src="<%=meteo_corrente.icon%>" class="img-fluid rounded-start"
+                        alt="meteo corrente">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 id="giorno_corrente" class="card-title">
+                          <%= meteo_corrente.giorno%>
+                        </h5>
+                        <h5><%= meteo_corrente.tempo%></h5>
+                        <p id="tempo_corrente" class="card-text">Pressione: <%=meteo_corrente.pressione%> &nbsp;&nbsp;Umidità:<%=meteo_corrente.umidita%> &nbsp;&nbsp;
+                          Nuvole: <%=meteo_corrente.nuvole%>&nbsp;&nbsp; Vento: <%=meteo_corrente.vento%></p>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="card-body">
+                        <h5 id="temperatura" class="card-title">
+                          <%= meteo_corrente.temperatura%>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--METEO PROSSIME ORE-->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed primary-color" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Meteo Prossime Ore
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse primary-color " aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body ">
+                        <ul class="list-group list-group-flush ">
+                          <% meteo_orario.forEach(function(orario) { %>
+                            <li class="list-group-item primary-color">
+                              <div class="row">
+                                <div class="col-md-1">
+                                 <h6><%=orario.ora%></h6>
+                                </div>
+                                <div class="col-md-10">
+                                  <p><strong><%=orario.tempo%></strong> &nbsp;&nbsp; Precipitazioni:<%=orario.precipitazioni%> &nbsp;&nbsp;  &nbsp;&nbsp;Umidità:<%=orario.umidita%> &nbsp;&nbsp;
+                                    Nuvole: <%=orario.nuvole%>&nbsp;&nbsp; Vento: <%=orario.vento%> </p>
+                                </div>
+                                <div class="col-md-1">
+                                  <h6><%=orario.temperatura%></h6>
+                                </div>
+                              </div>
+                            </li>
+                            <% }); %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <!--PREVISIONI PROSSIMI 7 GIORNI-->
+                <% meteo_previsioni.forEach(function(previsioni) { %>
+                  <li class="list-group-item secondary-color">
+                    <div class="row g-0">
+                      <div class="col-md-2">
+                        <img id="img_7" data-src=<%=previsioni.icon%> class="img-fluid rounded-start" alt="giorno 7">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 id="giorno_7" class="card-title">
+                            <%=previsioni.giorno%>
+                          </h5>
+                          <h5><%= previsioni.tempo%></h5>
+                          <p class="card-text">Precipitazioni:<%=previsioni.precipitazioni%> &nbsp;&nbsp; &nbsp;&nbsp;Umidità:<%=previsioni.umidita%> &nbsp;&nbsp;
+                            Nuvole: <%=previsioni.nuvole%>&nbsp;&nbsp; Vento: <%=previsioni.vento%> </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-body">
+                          <h6 id="temperatura_7" class="card-title">
+                            <%= previsioni.temperatura %>
+                              </h5>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <% }); %>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+
+            <!--Città italiane-->
+            <div class="card mt-5 shadow mb-5 bg-body rounded">
+              <div class="card-header text-white primary-color">
+                Meteo Città Italiane
+              </div>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Torino</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Genova</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Milano</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Bologna</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Firenze</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Roma</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Napoli</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Palermo</a>
+              </div>
+            </div>
+
+            <!--Città Europee-->
+            <div class="card mt-5 shadow mb-5 bg-body rounded">
+              <div class="card-header text-white primary-color">
+                Meteo Città Europee
+              </div>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Londra</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Parigi</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Madrid</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Berlino</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Atene</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Zurigo</a>
+                <a href="#" class="list-group-item list-group-item-action secondary-color">Amsterdam</a>
+              </div>
+            </div>
+
+            <!--Città Mondo-->
+            <div class="card mt-5 shadow-lg mb-5 bg-body rounded">
+              <div class="card-header primary-color text-white">
+                  Meteo Città Mondo
+              </div>
+              <div class="list-group">
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=New+York">New York</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Dubai">Dubai</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Sydney">Sydney</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Pechino">Pechino</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Los+Angeles">Los Angeles</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=San+Paolo">San Paolo</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Tokyo">Tokyo</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Nuova+Delhi">Nuova Delhi</a>
+                  <a class="list-group-item list-group-item-action secondary-color" href="/ricerca?citta=Buonos+Aires">Buenos Aires</a>
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+
+    <!-- FOOTER -->
+    <%-include("partials/footer.ejs")%>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+      <script  src="script/darkMode.js"></script>
+      <script  src="/script/imageLoader.js"></script>
+
+</body>
+
+</html>
