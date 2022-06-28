@@ -1,14 +1,6 @@
 const API_ID_Wheater = "55380768e96088848012064e79f3aae8";
-const API_ID_UnPlash = "mgOHsbxrdbHWek3dKMRAq5XvPtIoSRXQwDUXFwLgxrQ";
 
 
-async function getPhoto(photo){
-    console.log("QUERY PHOTO:"+ photo);
-    let response = await fetch("https://api.unsplash.com/search/photos?query="+photo+"&orientation=landscape&client_id="+API_ID_UnPlash,{ method:"GET"});
-    let jsonObj = await response.json();
-    let randonImage = Math.floor(Math.random() * 10);
-    document.getElementById("immagine").src = jsonObj.results[randonImage].urls.regular;
-}
 
 async function getCoordinatesByCity(city){
     let response = await fetch("https://api.openweathermap.org/geo/1.0/direct?q="+city+"&appid="+API_ID_Wheater,{ method:"GET"});
