@@ -5,12 +5,12 @@ const { mainModule } = require('process');
 
 
 require("dotenv").config();
-const API_ID_Wheater = "55380768e96088848012064e79f3aae8";
-const API_ID_UnPlash = "mgOHsbxrdbHWek3dKMRAq5XvPtIoSRXQwDUXFwLgxrQ";
+
 
 const app = express();
 const port = process.env.PORT || 8080;
-
+const API_ID_Wheater = process.env.API_ID_Wheater;
+const API_ID_UnSplash = process.env.API_ID_UnSplash;
 
 app.use(express.static(__dirname + '/assets'));
 app.set('views', path.join(__dirname, '/views'));
@@ -90,7 +90,7 @@ function getWeather(citta,res){
                 ora = date.getHours() + i;
                 icon = "http://openweathermap.org/img/wn/" + meteo_hourly[i].weather[0].icon + "@2x.png";
                 temperatura = meteo_hourly[i].temp;
-                tempo = meteo_hourly[i].weather[0].description;
+                let tempo = meteo_hourly[i].weather[0].description;
                 pressione = meteo_hourly[i].pressure; 
                 umidita = meteo_hourly[i].humidity;
                 vento = meteo_hourly[i].wind_speed;
@@ -108,7 +108,7 @@ function getWeather(citta,res){
                 let date = new Date(meteo_daily[i].dt * 1000);
                 giorno = dayNames[date.getDay()] + " " + date.getDate() + " " + monthsNames[date.getMonth()];
                 temperatura = meteo_daily[i].temp.min + "° - " + meteo_daily[i].temp.max + "°";
-                tempo = meteo_daily[i].weather[0].description;
+                let tempo = meteo_daily[i].weather[0].description;
                 pressione = meteo_daily[i].pressure; 
                 umidita = meteo_daily[i].humidity;
                 vento = meteo_daily[i].wind_speed;
@@ -141,7 +141,7 @@ async function getWeatherByCoordinate(lat, lon) {
 }
 
 async function getPhoto(photo) {
-    let response = await fetch("https://api.unsplash.com/search/photos?query=" + photo + "&orientation=landscape&client_id=" + API_ID_UnPlash, { method: "GET" });
+    let response = await fetch("https://api.unsplash.com/search/photos?query=" + photo + "&orientation=landscape&client_id=" + API_ID_UnSplash, { method: "GET" });
     let jsonObj = await response.json();
     //let randonImage = Math.floor(Math.random() * 10);
     return jsonObj.results[0].urls.regular;
